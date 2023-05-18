@@ -3,6 +3,8 @@ package com.razakHussein.employee.employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class InMemoryEmployeeService implements EmployeeService
 {
@@ -30,7 +32,8 @@ public class InMemoryEmployeeService implements EmployeeService
     }
 
     @Override
-    public Employee update(Employee employee) {
+    public Employee update(Employee employee)
+    {
         return dao.update(employee);
     }
 

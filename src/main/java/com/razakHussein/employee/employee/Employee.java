@@ -1,17 +1,21 @@
 package com.razakHussein.employee.employee;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "employees_db")
 public class Employee
 {
-
-    private int id;
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
 
-    public Employee(int id, String firstName, String lastName, String email, String phone)
+    public Employee( String firstName, String lastName, String email, String phone)
     {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,7 +26,7 @@ public class Employee
     {
     }
 
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
@@ -47,7 +51,7 @@ public class Employee
         return phone;
     }
 
-    public void setId(int id)
+    public void setId(Integer id)
     {
         this.id = id;
     }
@@ -71,4 +75,5 @@ public class Employee
     {
         this.phone = phone;
     }
+
 }

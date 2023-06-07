@@ -1,7 +1,7 @@
 package com.razakHussein.employee.employee.controller;
 
-import com.razakHussein.employee.employee.model.EmployeeDTO;
-import com.razakHussein.employee.employee.model.EmployeeMapper;
+import com.razakHussein.employee.employee.DTOmodel.EmployeeDTO;
+import com.razakHussein.employee.employee.DTOmodel.EmployeeMapper;
 import com.razakHussein.employee.employee.service.EmployeeService;
 import com.razakHussein.employee.employee.model.Employee;
 import lombok.RequiredArgsConstructor;

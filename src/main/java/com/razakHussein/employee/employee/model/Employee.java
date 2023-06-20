@@ -1,7 +1,9 @@
 package com.razakHussein.employee.employee.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,11 +29,13 @@ public class Employee
 
     @Column(unique = true, nullable = false)
     @NotBlank(message = "Email is required")
+    @Email(message = "invalid email address")
     private String email;
 
+    @Pattern(regexp = "^\\d{10}$", message = "Invalid mobile number")
     private String phone;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 

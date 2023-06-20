@@ -23,7 +23,7 @@ public class Department
     @NotBlank(message = "Department name is required")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "department")
     private List<Employee> employees;
 
 }

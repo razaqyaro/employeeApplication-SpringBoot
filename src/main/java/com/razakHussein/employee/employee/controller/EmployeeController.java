@@ -2,8 +2,11 @@ package com.razakHussein.employee.employee.controller;
 
 import com.razakHussein.employee.employee.DTOmodel.EmployeeDTO;
 import com.razakHussein.employee.employee.DTOmodel.EmployeeMapper;
+import com.razakHussein.employee.employee.model.Department;
+import com.razakHussein.employee.employee.service.DepartmentService;
 import com.razakHussein.employee.employee.service.EmployeeService;
 import com.razakHussein.employee.employee.model.Employee;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +21,16 @@ public class EmployeeController
 
     private final EmployeeService service;
     private final EmployeeMapper employeeMapper;
+    private final DepartmentService departmentService;
     @PostMapping
-    public EmployeeDTO save(@RequestBody EmployeeDTO employeeDTO)
+    public EmployeeDTO save(@RequestBody @Valid EmployeeDTO employeeDTO)
     {
         Employee employee = employeeMapper.fromDTO(employeeDTO);
+        if(employeeDTO.getDepartment() != null && employeeDTO.getDepartment().getId()!= null)
+        {
+            Department department = departmentService.findById(employeeDTO.getId());
+            employee.setDepartment(department);
+        }
         Employee savedEmployee = service.save(employee);
         return employeeMapper.toDTO(savedEmployee);
     }
@@ -37,10 +46,10 @@ public class EmployeeController
         List<Employee> employees = service.findAllEmployees();
         return employees.stream()
                 .map(employeeMapper::toDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
     @PutMapping("/{id}")
-    public EmployeeDTO update(@RequestBody EmployeeDTO employeeDTO, @PathVariable("id") Integer id)
+    public EmployeeDTO update(@RequestBody @Valid EmployeeDTO employeeDTO, @PathVariable("id") Integer id)
 
     {
         Employee employee = employeeMapper.fromDTO(employeeDTO);

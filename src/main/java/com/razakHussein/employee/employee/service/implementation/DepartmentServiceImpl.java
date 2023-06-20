@@ -12,30 +12,33 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class DepartmentServiceImpl implements DepartmentService
 {
-    private DepartmentRepository departmentRepository;
-    private EmployeeRepository employeeRepository;
+    private final DepartmentRepository departmentRepository;
+    private final EmployeeRepository employeeRepository;
 
-    @Autowired
+
     public DepartmentServiceImpl(DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.departmentRepository = departmentRepository;
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public Department save(Department department) {
+    public Department save(Department department)
+    {
         return departmentRepository.save(department);
     }
 
     @Override
-    public List<Department> findAllDepartments() {
+    public List<Department> findAllDepartments()
+    {
         return departmentRepository.findAll();
     }
 
     @Override
-    public Department findById(int id) {
+    public Department findById(int id)
+    {
         return departmentRepository.findById(id).orElseThrow();
     }
 

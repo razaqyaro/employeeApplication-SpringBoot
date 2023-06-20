@@ -27,6 +27,8 @@ public class EmployeeDTO
 
     private String phone;
 
+    //private Integer departmentId;
+
     private Department department;
 
 }

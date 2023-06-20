@@ -4,6 +4,7 @@ import com.razakHussein.employee.employee.DTOmodel.DepartmentDTO;
 import com.razakHussein.employee.employee.DTOmodel.DepartmentMapper;
 import com.razakHussein.employee.employee.model.Department;
 import com.razakHussein.employee.employee.service.DepartmentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,7 @@ public class DepartmentController
     }
 
     @PutMapping("/{id}")
-    public DepartmentDTO update(@RequestBody DepartmentDTO departmentDTO, @PathVariable("id") Integer id)
+    public DepartmentDTO update(@RequestBody @Valid DepartmentDTO departmentDTO,@Valid @PathVariable("id") Integer id)
     {
         Department department = departmentMapper.fromDTO(departmentDTO);
         Department updatedDepartment = departmentService.update(department, id);
@@ -56,12 +57,11 @@ public class DepartmentController
         departmentService.delete(id);
     }
 
-    @PostMapping("/{departmentId}/employees/{employeeId}")
+    @PostMapping("/{departmentId}")
     public DepartmentDTO addEmployeeToDepartment(
             @PathVariable("departmentId") Integer departmentId,
-            @PathVariable("employeeId") Integer employeeId
-    )
-    {
+            @RequestParam("employeeId") Integer employeeId
+    ) {
         Department department = departmentService.addEmployeeToDepartment(departmentId, employeeId);
         return departmentMapper.toDTO(department);
     }

@@ -11,5 +11,5 @@ public interface DepartmentService
     Department findById(int id);
     Department update(Department department, Integer id);
     void delete(int id);
-    Department addEmployeeToDepartment(Integer departmentId, Integer employeeId);
+   // Department addEmployeeToDepartment(Integer departmentId, Integer employeeId);
 }

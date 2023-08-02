@@ -57,12 +57,12 @@ public class DepartmentController
         departmentService.delete(id);
     }
 
-    @PostMapping("/{departmentId}")
-    public DepartmentDTO addEmployeeToDepartment(
-            @PathVariable("departmentId") Integer departmentId,
-            @RequestParam("employeeId") Integer employeeId
-    ) {
-        Department department = departmentService.addEmployeeToDepartment(departmentId, employeeId);
-        return departmentMapper.toDTO(department);
-    }
+//    @PostMapping("/{departmentId}")
+//    public DepartmentDTO addEmployeeToDepartment(
+//            @PathVariable("departmentId") Integer departmentId,
+//            @RequestParam("employeeId") Integer employeeId
+//    ) {
+//        Department department = departmentService.addEmployeeToDepartment(departmentId, employeeId);
+//        return departmentMapper.toDTO(department);
+//    }
 }

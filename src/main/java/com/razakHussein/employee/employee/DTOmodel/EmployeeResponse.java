@@ -3,14 +3,14 @@ package com.razakHussein.employee.employee.DTOmodel;
 import com.razakHussein.employee.employee.model.Department;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @Builder
-public class EmployeeDTO
+public class EmployeeResponse
 {
 
     private Integer id;
@@ -26,6 +26,7 @@ public class EmployeeDTO
 
     private String phone;
 
-    private Integer departmentId;
+    //private Integer departmentId;
 
+    private Department department;
 }

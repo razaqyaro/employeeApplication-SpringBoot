@@ -43,7 +43,8 @@ public class DepartmentServiceImpl implements DepartmentService
     }
 
     @Override
-    public Department update(Department department, Integer id) {
+    public Department update(Department department, Integer id)
+    {
         Department findDepartment = departmentRepository.findById(id).orElseThrow();
         findDepartment.setName(department.getName());
         return departmentRepository.save(findDepartment);
@@ -55,12 +56,13 @@ public class DepartmentServiceImpl implements DepartmentService
         departmentRepository.deleteById(id);
     }
 
-    @Override
-    public Department addEmployeeToDepartment(Integer departmentId, Integer employeeId) {
-        Department department = departmentRepository.findById(departmentId).orElseThrow();
-        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
-        department.getEmployees().add(employee);
-        employee.setDepartment(department);
-        return departmentRepository.save(department);
-    }
+//    @Override
+//    public Department addEmployeeToDepartment(Integer departmentId, Integer employeeId) {
+//        Department department = departmentRepository.findById(departmentId).orElseThrow();
+//        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+//        department.getEmployees().add(employee);
+//        employee.setDepartment(department);
+//        department.getEmployees().add(employee);
+//        return department;
+//    }
 }

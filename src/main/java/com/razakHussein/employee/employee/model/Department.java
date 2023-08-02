@@ -1,7 +1,7 @@
 package com.razakHussein.employee.employee.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +24,8 @@ public class Department
     private String name;
 
     @OneToMany(mappedBy = "department")
+    @JsonIgnore
+
     private List<Employee> employees;
 
 }
